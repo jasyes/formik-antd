@@ -15,6 +15,7 @@ export const FormItem = ({
   showInitialErrorAfterTouched = false,
   children,
   validate,
+  help,
   ...restProps
 }: FormItemProps) => (
   <Field name={name} validate={validate}>
@@ -45,7 +46,7 @@ export const FormItem = ({
           }
           hasFeedback={isValid}
           help={
-            showHelp && (
+            showHelp ? (
               <>
                 {hasError && <li>{error}</li>}
                 {hasInitialError &&
@@ -53,7 +54,7 @@ export const FormItem = ({
                     <li>{initialError}</li>
                   )}
               </>
-            )
+            ) : help
           }
           name={name}
           {...restProps}
